@@ -6,8 +6,8 @@
   %tr
     %th= PresentEntry.human_attribute_name :name
     %th= PresentEntry.human_attribute_name :address
-    %th= PresentEntry.human_attribute_name :mobile_phone_number
     %th= PresentEntry.human_attribute_name :email
+    %th= PresentEntry.human_attribute_name :mobile_phone_number
     %th
     %th
     %th
@@ -16,8 +16,8 @@
     %tr
       %td= present_entry.name
       %td= present_entry.address
-      %td= present_entry.mobile_phone_number
       %td= mail_to present_entry.email
+      %td= present_entry.mobile_phone_number
       %td= link_to t('view.base.show'), present_entry
       %td= link_to t('view.base.edit'), edit_present_entry_path(present_entry)
       %td= link_to t('view.base.destroy'), present_entry, :method => :delete, :data => { :confirm =>  t('view.base.confirm')}
