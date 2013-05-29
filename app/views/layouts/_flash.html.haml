@@ -1,0 +1,6 @@
+- {:notice => "alert alert-info", :alert => "alert alert-error"}.each do |type, class_str|
+  - msg = self.send(type)
+  - if msg.present?
+    .alert-message{:class => class_str}
+      %a.close{:href => "#", "data-dismiss" => "alert"} x
+      %p= t(msg) || msg
