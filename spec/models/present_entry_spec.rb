@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe PresentEntry do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#new' do
+    it 'is not verified by default' do
+      expect(PresentEntry.new).not_to be_verified
+    end
+  end
 end
