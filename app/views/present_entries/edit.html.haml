@@ -1,7 +1,7 @@
-%h1 Editing present_entry
+%h1= "#{PresentEntry.model_name.human}の#{t 'view.base.edit'}"
 
 = render 'form'
 
-= link_to 'Show', @present_entry
+= link_to t('view.base.back_to_show'), @present_entry
 \|
-= link_to 'Back', present_entries_path
+= link_to t('view.base.back_to_index'), present_entries_path

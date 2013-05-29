@@ -1,16 +1,15 @@
-%p
-  %b Name:
-  = @present_entry.name
-%p
-  %b Address:
-  = @present_entry.address
-%p
-  %b Mobile phone number:
-  = @present_entry.mobile_phone_number
-%p
-  %b Email:
-  = @present_entry.email
+%h1= PresentEntry.model_name.human
 
-= link_to 'Edit', edit_present_entry_path(@present_entry)
+%dl
+  %dt= PresentEntry.human_attribute_name :name
+  %dd= @present_entry.name
+  %dt= PresentEntry.human_attribute_name :address
+  %dd= @present_entry.address
+  %dt= PresentEntry.human_attribute_name :mobile_phone_number
+  %dd= @present_entry.mobile_phone_number
+  %dt= PresentEntry.human_attribute_name :email
+  %dd= mail_to @present_entry.email
+
+= link_to t('view.base.edit'), edit_present_entry_path(@present_entry)
 \|
-= link_to 'Back', present_entries_path
+= link_to t('view.base.back_to_index'), present_entries_path

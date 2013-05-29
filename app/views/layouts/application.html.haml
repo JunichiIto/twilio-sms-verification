@@ -16,7 +16,7 @@
           = link_to "Twilio SMS Verification Sample", root_path, class: "brand"
           .container.nav-collapse
             %ul.nav
-              %li= link_to '申込み一覧', present_entries_path
+              %li= link_to "#{PresentEntry.model_name.human}一覧", present_entries_path
 
     .container
       .row-fluid

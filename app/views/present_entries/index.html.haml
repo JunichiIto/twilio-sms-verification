@@ -1,13 +1,13 @@
-%h1 Listing present_entries
+%h1= "#{PresentEntry.model_name.human}一覧"
 
-%div= link_to 'New Present entry', new_present_entry_path
+%div= link_to t('view.base.new'), new_present_entry_path
 
 %table.table.table-bordered.table-striped
   %tr
-    %th Name
-    %th Address
-    %th Mobile phone number
-    %th Email
+    %th= PresentEntry.human_attribute_name :name
+    %th= PresentEntry.human_attribute_name :address
+    %th= PresentEntry.human_attribute_name :mobile_phone_number
+    %th= PresentEntry.human_attribute_name :email
     %th
     %th
     %th
@@ -17,7 +17,7 @@
       %td= present_entry.name
       %td= present_entry.address
       %td= present_entry.mobile_phone_number
-      %td= present_entry.email
-      %td= link_to 'Show', present_entry
-      %td= link_to 'Edit', edit_present_entry_path(present_entry)
-      %td= link_to 'Destroy', present_entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= mail_to present_entry.email
+      %td= link_to t('view.base.show'), present_entry
+      %td= link_to t('view.base.edit'), edit_present_entry_path(present_entry)
+      %td= link_to t('view.base.destroy'), present_entry, :method => :delete, :data => { :confirm =>  t('view.base.confirm')}
