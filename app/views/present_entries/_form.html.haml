@@ -2,10 +2,10 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :address
-    = f.input :mobile_phone_number
-    = f.input :email
+    = f.input :name, input_html: { class: 'input-short' }
+    = f.input :address, input_html: { class: 'input-long' }
+    = f.input :mobile_phone_number, input_html: { class: 'input-short' }
+    = f.input :email, input_html: { class: 'input-long' }
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-primary'
