@@ -1,15 +1,45 @@
-@import "twitter/bootstrap/variables"
+$main-color: #CA0908
 
 $baseFontSize: 16px
+$bodyBackground: #F1F1F1
 
+$navbarInverseBackgroundHighlight: lighten($main-color, 5%)
+$navbarInverseBackground: $main-color
+$navbarInverseText: white
+$navbarInverseLinkColor: white
+
+$linkColor: #C00
+$btnPrimaryBackgroundHighlight: lighten($linkColor, 5%) 
+
+@import "twitter/bootstrap/variables"
 @import "twitter/bootstrap"
+
+.navbar
+  margin-bottom: 0
+
+.container-main
+  border: 1px solid #E2E2E2
+  background-color: white
+  width: 880px
+  padding: 40px
+
+.container-footer
+  width: 960px
 
 footer
   margin-top: 30px
+  p
+    color: #a3a3ac
+
+.alert-error
+  background-color: lighten($main-color, 55%)
+  border-color: ligthen($main-color, 50%)
+  padding: 15px
+  margin: 15px 0
 
 h1
   font-size: 24px
-  border-left: 7px solid green
+  border-left: 7px solid $main-color
   padding-left: 10px
 
 .new-link

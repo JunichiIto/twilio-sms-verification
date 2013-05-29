@@ -2,7 +2,7 @@
 %html(lang="ja")
   %head
     %meta(charset="utf-8")
-    %title= content_for?(:title) ? yield(:title) : "Twilio SMS Verification Sample"
+    %title= content_for?(:title) ? yield(:title) : "Twilio SMS Verification"
     = csrf_meta_tags
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
@@ -10,24 +10,26 @@
     = stylesheet_link_tag "application", :media => "all"
 
   %body
-    .navbar.navbar-fluid
+    .navbar.navbar-fluid.navbar-inverse
       .navbar-inner
         .container
-          = link_to "Twilio SMS Verification Sample", root_path, class: "brand"
+          = link_to "Twilio SMS Verification", root_path, class: "brand"
           .container.nav-collapse
             %ul.nav
               %li= link_to "#{PresentEntry.model_name.human}一覧", present_entries_path
 
-    .container
+    .container.container-main
       .row-fluid
         .span12
           = render "layouts/flash"
           = yield
-      %footer
-        %p
-          &copy;
-          = link_to 'Junichi Ito', 'https://github.com/JunichiIto'
-          2013
+    %footer
+      .container.container-footer
+        .row-fluid
+          .span12
+            %p
+              &copy;
+              Junichi Ito 2013
     /
       Javascripts
       \==================================================
