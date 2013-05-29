@@ -34,6 +34,7 @@ group :development, :test do
   gem "pry-doc"
   gem 'pry-stack_explorer'
   gem 'awesome_print'
+  gem 'factory_girl_rails'
 end
 
 group :development do

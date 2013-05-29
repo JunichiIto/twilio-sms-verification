@@ -12,6 +12,7 @@ guard 'rspec', :version => 2, :cli => "--drb", :all_after_pass => false, :all_on
   watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
   watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
+  watch('spec/factories.rb')                          { "spec/models" }
 
   # Capybara features specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/features/#{m[1]}_spec.rb" }

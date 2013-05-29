@@ -73,6 +73,7 @@ module TwilioSmsVerification
       g.request_specs false
       g.stylesheets false
       g.javascripts false
+      g.factory_girl false
     end
 
     STDOUT.sync = true
