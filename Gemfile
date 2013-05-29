@@ -15,6 +15,7 @@ gem "haml", ">= 3.0.0"
 gem "haml-rails"
 gem "jquery-rails"
 gem 'simple_form'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'sqlite3'
