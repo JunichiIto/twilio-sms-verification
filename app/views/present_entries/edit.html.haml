@@ -2,6 +2,7 @@
 
 = render 'form'
 
-= link_to t('view.base.back_to_show'), @present_entry
-\|
-= link_to t('view.base.back_to_index'), present_entries_path
+.nav-links
+  = link_to t('view.base.back_to_show'), @present_entry
+  \|
+  = link_to t('view.base.back_to_index'), present_entries_path

@@ -10,6 +10,7 @@
   %dt= PresentEntry.human_attribute_name :email
   %dd= mail_to @present_entry.email
 
-= link_to t('view.base.edit'), edit_present_entry_path(@present_entry)
-\|
-= link_to t('view.base.back_to_index'), present_entries_path
+.nav-links
+  = link_to t('view.base.edit'), edit_present_entry_path(@present_entry)
+  \|
+  = link_to t('view.base.back_to_index'), present_entries_path

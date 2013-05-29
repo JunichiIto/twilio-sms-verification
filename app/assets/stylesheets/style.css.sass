@@ -7,6 +7,7 @@ $navbarInverseBackgroundHighlight: lighten($main-color, 5%)
 $navbarInverseBackground: $main-color
 $navbarInverseText: white
 $navbarInverseLinkColor: white
+$navbarHeight: 60px
 
 $linkColor: #C00
 $btnPrimaryBackgroundHighlight: lighten($linkColor, 5%) 
@@ -16,12 +17,21 @@ $btnPrimaryBackgroundHighlight: lighten($linkColor, 5%)
 
 .navbar
   margin-bottom: 0
+  .brand
+    font-family: Helvetica,Arial,sans-serif
+    font-size: 18px
+    font-weight: bold
+
+.navbar-inner
+  -webkit-border-radius: 0
+  -moz-border-radius: 0
+  border-radius: 0
 
 .container-main
   border: 1px solid #E2E2E2
   background-color: white
   width: 880px
-  padding: 40px
+  padding: 20px 40px 40px 40px
 
 .container-footer
   width: 960px
@@ -36,6 +46,18 @@ footer
   border-color: ligthen($main-color, 50%)
   padding: 15px
   margin: 15px 0
+
+$info-color: #96CB8E
+.alert-info
+  background-color: lighten($info-color, 25%)
+  border-color: lighten($info-color, 10%)
+  color: darken($info-color, 20%)
+  p
+    margin: 5px
+
+.alert
+  .close
+    top: 2px
 
 h1
   font-size: 24px
@@ -66,3 +88,6 @@ dl.model-show
     margin-top: 20px
   dd
     margin-top: 10px
+
+.nav-links
+  margin-top: 40px
