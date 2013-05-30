@@ -2,12 +2,24 @@
 class PresentEntry < ActiveRecord::Base
   VERIFICATION_CODE_LENGTH = 6
   
-  attr_accessible :address, :email, :mobile_phone_number, :name
+  attr_accessor :verification_code_confirmation
+  attr_accessible :address, :email, :mobile_phone_number, :name, :verification_code_confirmation
   validates_presence_of :address, :email, :mobile_phone_number, :name
   validates :mobile_phone_number, format: { with: /^\d{3}-?\d{4}-?\d{4}$/ }, allow_blank: true
 
   after_create :issue_verification_code
   after_create :send_verification_code
+
+  def verify_and_save
+    if self.verification_code == self.verification_code_confirmation
+      self.verified = true
+      self.verification_code = nil
+      self.save
+    else
+      self.errors.add(:verification_code_confirmation)
+      false
+    end
+  end
 
   private
 

@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 describe PresentEntry do
@@ -63,6 +64,41 @@ describe PresentEntry do
         specify do
           expect{present_entry.valid?}.to change{present_entry.errors[:mobile_phone_number]}.from([])
         end
+      end
+    end
+  end
+
+  describe '#verify_and_save' do
+    let(:present_entry) { create :present_entry }
+    context 'when valid' do
+      before do
+        present_entry.verification_code_confirmation = present_entry.verification_code
+      end
+      it 'has been verified' do
+        expect{present_entry.verify_and_save}.to change{present_entry.verified}.from(false).to(true)
+      end
+      it 'clears verification code' do
+        expect{present_entry.verify_and_save}.to change{present_entry.verification_code}.to(nil)
+      end
+      it 'returns true' do
+        expect(present_entry.verify_and_save).to be_true
+      end
+    end
+    context 'when invalid' do
+      before do
+        present_entry.verification_code_confirmation = present_entry.verification_code + "123"
+      end
+      it 'has not been verified' do
+        expect{present_entry.verify_and_save}.not_to change{present_entry.verified}.from(false)
+      end
+      it 'does not clear verification code' do
+        expect{present_entry.verify_and_save}.not_to change{present_entry.verification_code}
+      end
+      it 'returns false' do
+        expect(present_entry.verify_and_save).to be_false
+      end
+      it 'adds error on verification_code_confirmation' do
+        expect{present_entry.verify_and_save}.to change{present_entry.errors[:verification_code_confirmation]}.from([]).to(['は不正な値です。'])
       end
     end
   end
