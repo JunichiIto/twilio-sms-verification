@@ -1,0 +1,9 @@
+%h1= "#{PresentEntry.human_attribute_name(:verification_code_confirmation)}の入力"
+= simple_form_for(@present_entry, url: present_entry_verification_path(@present_entry)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :verification_code_confirmation, input_html: { class: 'input-short' }
+
+  .form-actions
+    = f.button :submit, '送信する', class: 'btn btn-primary'

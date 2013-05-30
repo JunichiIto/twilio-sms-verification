@@ -10,6 +10,8 @@ class PresentEntry < ActiveRecord::Base
   after_create :issue_verification_code
   after_create :send_verification_code
 
+  scope :not_verified, ->{ where(verified: false) }
+
   def verify_and_save(attributes)
     self.assign_attributes attributes
     if self.verification_code == self.verification_code_confirmation
