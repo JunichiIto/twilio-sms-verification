@@ -70,35 +70,32 @@ describe PresentEntry do
 
   describe '#verify_and_save' do
     let(:present_entry) { create :present_entry }
+    let(:attributes) { { verification_code_confirmation: verification_code_confirmation } }
     context 'when valid' do
-      before do
-        present_entry.verification_code_confirmation = present_entry.verification_code
-      end
+      let(:verification_code_confirmation) { present_entry.verification_code }
       it 'has been verified' do
-        expect{present_entry.verify_and_save}.to change{present_entry.verified}.from(false).to(true)
+        expect{present_entry.verify_and_save(attributes)}.to change{present_entry.verified}.from(false).to(true)
       end
       it 'clears verification code' do
-        expect{present_entry.verify_and_save}.to change{present_entry.verification_code}.to(nil)
+        expect{present_entry.verify_and_save(attributes)}.to change{present_entry.verification_code}.to(nil)
       end
       it 'returns true' do
-        expect(present_entry.verify_and_save).to be_true
+        expect(present_entry.verify_and_save(attributes)).to be_true
       end
     end
     context 'when invalid' do
-      before do
-        present_entry.verification_code_confirmation = present_entry.verification_code + "123"
-      end
+      let(:verification_code_confirmation) { "123456" }
       it 'has not been verified' do
-        expect{present_entry.verify_and_save}.not_to change{present_entry.verified}.from(false)
+        expect{present_entry.verify_and_save(attributes)}.not_to change{present_entry.verified}.from(false)
       end
       it 'does not clear verification code' do
-        expect{present_entry.verify_and_save}.not_to change{present_entry.verification_code}
+        expect{present_entry.verify_and_save(attributes)}.not_to change{present_entry.verification_code}
       end
       it 'returns false' do
-        expect(present_entry.verify_and_save).to be_false
+        expect(present_entry.verify_and_save(attributes)).to be_false
       end
       it 'adds error on verification_code_confirmation' do
-        expect{present_entry.verify_and_save}.to change{present_entry.errors[:verification_code_confirmation]}.from([]).to(['は不正な値です。'])
+        expect{present_entry.verify_and_save(attributes)}.to change{present_entry.errors[:verification_code_confirmation]}.from([]).to(['は不正な値です。'])
       end
     end
   end
