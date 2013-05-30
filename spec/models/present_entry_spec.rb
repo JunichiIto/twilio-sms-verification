@@ -2,12 +2,6 @@
 require 'spec_helper'
 
 describe PresentEntry do
-  let(:messages) { stub 'messages' }
-  before do
-    messages.stub(:create)
-    Twilio::REST::Client.stub_chain(:new, :account, :sms, :messages).and_return(messages)
-  end
-
   describe '#new' do
     it 'is not verified by default' do
       expect(build :present_entry).not_to be_verified
@@ -22,13 +16,9 @@ describe PresentEntry do
     end
 
     it 'sends verification code after create' do
-      messages.should_receive(:create)
       present_entry.save
-    end
-
-    it 'formats mobile phone number' do
-      messages.should_receive(:create).with(hash_including(to: "+818000000000"))
-      present_entry.save
+      open_last_text_message_for("+8180-0000-0000")
+      expect(current_text_message.body).to match /この認証コードを入力してください。\n\d{6}/
     end
   end
 

@@ -43,8 +43,8 @@ class PresentEntry < ActiveRecord::Base
     @twilio_client ||= Twilio::REST::Client.new ENV["TWILIO_SID"], ENV["TWILIO_TOKEN"]
   end
 
-  # 080-1234-5678 => # +818012345678
+  # 080-1234-5678 => # +8180-1234-5678
   def formatted_mobile_phone_number
-    "+81#{self.mobile_phone_number.gsub('-', '')[1..-1]}"
+    "+81#{self.mobile_phone_number[1..-1]}"
   end
 end

@@ -15,6 +15,8 @@ Spork.prefork do
     config.infer_base_class_for_anonymous_controllers = false
     config.order = "random"
     config.include FactoryGirl::Syntax::Methods
+    config.include SmsSpec::Helpers
+    config.include SmsSpec::Matchers
   end
 end
 
