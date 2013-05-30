@@ -20,6 +20,10 @@ describe PresentEntry do
       open_last_text_message_for("+8180-0000-0000")
       expect(current_text_message.body).to match /この認証コードを入力してください。\n\d{6}/
     end
+
+    it 'will not be verified' do
+      expect{present_entry.save}.not_to change{present_entry.verified}.from(false)
+    end
   end
 
   describe 'validation' do
