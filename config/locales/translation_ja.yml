@@ -24,3 +24,4 @@ ja:
         mobile_phone_number: 携帯電話番号
         name: 名前
         verification_code_confirmation: 認証コード
+        verified: 認証済み？
